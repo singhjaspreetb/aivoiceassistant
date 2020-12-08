@@ -50,7 +50,7 @@ while(text_length < 80):
                         MyText = r.recognize_google(audio2)
                         MyText = MyText.lower()
 
-                        print("Message: \n"+MyText)
+                        print("Command: \n"+MyText)
                         SpeakText(MyText)
                         if MyText == "hai" or MyText == "hello":
                                 engine = pyttsx3.init()
