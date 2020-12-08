@@ -19,6 +19,7 @@ def SpeakText(command):
         engine.runAndWait() 
         
 #this is first speak
+#this is for test
 engine = pyttsx3.init()
 engine.say("Hi I am your voice assistant")
 engine.runAndWait()
