@@ -60,7 +60,7 @@ while(text_length<80):
                                 engine.say("Done")
                                 engine.runAndWait()
                         elif MyText=="play music" or MyText=="music":
-                                 webbrowser.open_new_tab("https://www.jiosaavn.com/song/aankh-marey/BiQ9A0N9QXY")
+                                 webbrowser.open_new_tab("https://music.youtube.com/watch?v=HC3-gSNbx00&list=RDAMVMHC3-gSNbx00")
                                  engine = pyttsx3.init()
                                  engine.say("Here the music")
                                  engine.runAndWait()
