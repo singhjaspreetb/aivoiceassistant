@@ -18,10 +18,9 @@ def SpeakText(command):
         engine.say(command) 
         engine.runAndWait() 
         
-#this is first speak
-#this is for test
+
 engine = pyttsx3.init()
-engine.say("Hi I am your voice assistant")
+engine.say("Hi I am your assistant")
 engine.runAndWait()
 # Loop infinitely for user to speak 
 text_length=0
@@ -50,32 +49,46 @@ while(text_length<80):
                         MyText = MyText.lower() 
 
                         print("Message: \n"+MyText) 
-                        SpeakText(MyText)
-                         
+                        SpeakText(MyText) 
                         if MyText == "hai" or MyText == "hello":
                             engine = pyttsx3.init()
                             engine.say("hello")
                             engine.runAndWait()
-                        elif MyText == "what is artificial intelligence":
-                            webbrowser.open_new_tab("https://en.wikipedia.org/wiki/Artificial_intelligence")
-                            engine = pyttsx3.init()
-                            engine.say("Done")
-                            engine.runAndWait()
-                        elif MyText=="open google":
+                        elif MyText=="open google" or MyText=="google":
                                 webbrowser.open_new_tab("http://www.google.com")
                                 engine = pyttsx3.init()
                                 engine.say("Done")
                                 engine.runAndWait()
-                        elif MyText == "open gmail":
+                        elif MyText=="play music" or MyText=="music":
+                                 webbrowser.open_new_tab("https://www.jiosaavn.com/song/aankh-marey/BiQ9A0N9QXY")
+                                 engine = pyttsx3.init()
+                                 engine.say("Here the music")
+                                 engine.runAndWait()
+                        elif MyText == "open gmail" or MyText=="gmail":
                             webbrowser.open_new_tab("http://www.gmail.com")
                             engine = pyttsx3.init()
-                            engine.say("Done")
+                            engine.say("Here your gmail account")
                             engine.runAndWait()
-                        elif MyText == "open youtube":
+                        elif MyText == "open youtube" or MyText=="youtube":
                             webbrowser.open_new_tab("http://www.youtube.com")
                             engine = pyttsx3.init()
-                            engine.say("Done")
+                            engine.say("opened youtube")
                             engine.runAndWait()
+                        elif MyText == "artificial intelligence" or MyText=="what is artificial intelligence":
+                            webbrowser.open_new_tab("https://en.wikipedia.org/wiki/Artificial_intelligence")
+                            engine = pyttsx3.init()
+                            engine.say("Artificial Intelligence is Technique that mimics Human Behaviour.It is widely used today in every field.")
+                            engine.runAndWait()
+                        elif MyText == "open blackboard" or MyText=="blackboard":
+                                webbrowser.open_new_tab("https://cuchd.blackboard.com/?new_loc=%2Fultra%2Fcourse")
+                                engine = pyttsx3.init()
+                                engine.say("Done")
+                                engine.runAndWait()
+                        elif MyText == "open university portal":
+                                webbrowser.open_new_tab("https://uims.cuchd.in/UIMS/Login.aspx")
+                                engine = pyttsx3.init()
+                                engine.say("Done")
+                                engine.runAndWait()
                         elif MyText == "current time":
                             now = datetime.now()
                             current_time = now.strftime("%H:%M:%S")
