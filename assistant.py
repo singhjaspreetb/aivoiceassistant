@@ -20,7 +20,7 @@ def SpeakText(command):
         
 
 engine = pyttsx3.init()
-engine.say("Hi I am your assistant")
+engine.say("Hi I am JARVIS, your personal assistant")
 engine.runAndWait()
 # Loop infinitely for user to speak 
 text_length=0
@@ -59,8 +59,13 @@ while(text_length<80):
                                 engine = pyttsx3.init()
                                 engine.say("Done")
                                 engine.runAndWait()
+                        elif MyText=="your name" or MyText=="what is your name":
+                                
+                                engine = pyttsx3.init()
+                                engine.say("Hello, my name is Jarvis")
+                                engine.runAndWait()
                         elif MyText=="play music" or MyText=="music":
-                                 webbrowser.open_new_tab("https://www.jiosaavn.com/song/aankh-marey/BiQ9A0N9QXY")
+                                 webbrowser.open_new_tab("https://wynk.in/music/detailsearch/wakhra?q=wakhra%20swag%20feat.%20badshah")
                                  engine = pyttsx3.init()
                                  engine.say("Here the music")
                                  engine.runAndWait()
@@ -68,6 +73,11 @@ while(text_length<80):
                             webbrowser.open_new_tab("http://www.gmail.com")
                             engine = pyttsx3.init()
                             engine.say("Here your gmail account")
+                            engine.runAndWait()
+                        elif MyText == "tell me about yourself" or MyText=="who are you" or MyText=="about yourself":
+                            
+                            engine = pyttsx3.init()
+                            engine.say("I am JARVIS... version ..1 point O...I have been created by... J. V. S. D. Co-operation. Its Members are JASPREET...VISHAL....Sonu.....DHRUV.")
                             engine.runAndWait()
                         elif MyText == "open youtube" or MyText=="youtube":
                             webbrowser.open_new_tab("http://www.youtube.com")
@@ -79,15 +89,20 @@ while(text_length<80):
                             engine = pyttsx3.init()
                             engine.say("Artificial Intelligence is Technique that mimics Human Behaviour.It is widely used today in every field.")
                             engine.runAndWait()
+                        elif MyText == "deep learning" or MyText=="what is deep learning":
+                            webbrowser.open_new_tab("https://www.forbes.com/sites/bernardmarr/2018/10/01/what-is-deep-learning-ai-a-simple-guide-with-8-practical-examples/?sh=2c6e82058d4b")
+                            engine = pyttsx3.init()
+                            engine.say("Deep learning is a subset of machine learning where artificial neural networks, algorithms inspired by the human brain, learn from large amounts of data..")
+                            engine.runAndWait()
                         elif MyText == "open blackboard" or MyText=="blackboard":
                                 webbrowser.open_new_tab("https://cuchd.blackboard.com/?new_loc=%2Fultra%2Fcourse")
                                 engine = pyttsx3.init()
-                                engine.say("Done")
+                                engine.say("Here's The Blackboard From Chandigarh University")
                                 engine.runAndWait()
                         elif MyText == "open university portal":
                                 webbrowser.open_new_tab("https://uims.cuchd.in/UIMS/Login.aspx")
                                 engine = pyttsx3.init()
-                                engine.say("Done")
+                                engine.say("Here's Your C U I M S account")
                                 engine.runAndWait()
                         elif MyText == "current time":
                             now = datetime.now()
@@ -96,10 +111,10 @@ while(text_length<80):
                             engine = pyttsx3.init()
                             engine.say(current_time)
                             engine.runAndWait()
-                        elif MyText=="stop":
+                        elif MyText=="stop" or MyText=="bye" or MyText=="no thanks"or MyText=="bye bye jarvis":
                                 text_length=90
                                 engine = pyttsx3.init()
-                                engine.say("Bye have a good day")
+                                engine.say("OK,Bye have a good day")
                                 engine.runAndWait()
                         
         except sr.RequestError as e: 
