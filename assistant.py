@@ -107,4 +107,4 @@ while(text_length<80):
                 
         except sr.UnknownValueError: 
                 print("unknown error occured")
-        
+                
