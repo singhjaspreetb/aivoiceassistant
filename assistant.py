@@ -20,7 +20,7 @@ def SpeakText(command):
         
 
 engine = pyttsx3.init()
-engine.say("Hi I am your assistant")
+engine.say("Hi I am your voice assistant")
 engine.runAndWait()
 # Loop infinitely for user to speak 
 text_length=0
