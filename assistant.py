@@ -55,6 +55,11 @@ while(text_length<80):
                             engine = pyttsx3.init()
                             engine.say("hello")
                             engine.runAndWait()
+                        elif MyText == "what is ai":
+                            webbrowser.open_new_tab("https://en.wikipedia.org/wiki/Artificial_intelligence")
+                            engine = pyttsx3.init()
+                            engine.say("Done")
+                            engine.runAndWait()
                         elif MyText=="open google":
                                 webbrowser.open_new_tab("http://www.google.com")
                                 engine = pyttsx3.init()
