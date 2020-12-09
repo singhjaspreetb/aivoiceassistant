@@ -99,6 +99,11 @@ while(text_length<80):
                                 engine = pyttsx3.init()
                                 engine.say("Here's The Blackboard From Chandigarh University")
                                 engine.runAndWait()
+                        elif MyText == "who taught us" or MyText=="our teacher name":
+                               
+                                engine = pyttsx3.init()
+                                engine.say("doctor Prashant Upadhyay")
+                                engine.runAndWait()
                         elif MyText == "open university portal":
                                 webbrowser.open_new_tab("https://uims.cuchd.in/UIMS/Login.aspx")
                                 engine = pyttsx3.init()
