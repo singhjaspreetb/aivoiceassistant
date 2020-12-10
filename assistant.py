@@ -26,7 +26,7 @@ engine.say("Hi I am JARVIS, your personal assistant")
 engine.runAndWait()
 # Loop infinitely for user to speak
 text_length = 0
-# It will going to continue run until it count the text length less than 20.
+# It will going to continue run until it count the text length less than 80.
 while(text_length < 80):
 
        # Exception handling to handle
