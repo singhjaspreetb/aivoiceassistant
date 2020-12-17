@@ -4,8 +4,9 @@
 import webbrowser
 import speech_recognition as sr
 import pyttsx3
+import wikipedia
+from googlesearch import search
 from datetime import datetime
-
 
 # Initialize the recognizer
 r = sr.Recognizer()
@@ -85,16 +86,16 @@ while(text_length < 80):
                                 engine = pyttsx3.init()
                                 engine.say("opened youtube")
                                 engine.runAndWait()
-                        elif MyText == "artificial intelligence" or MyText == "what is artificial intelligence":
-                                webbrowser.open_new_tab("https://en.wikipedia.org/wiki/Artificial_intelligence")
-                                engine = pyttsx3.init()
-                                engine.say("Artificial Intelligence is Technique that mimics Human Behaviour.It is widely used today in every field.")
-                                engine.runAndWait()
-                        elif MyText == "deep learning" or MyText == "what is deep learning":
-                                webbrowser.open_new_tab("https://www.forbes.com/sites/bernardmarr/2018/10/01/what-is-deep-learning-ai-a-simple-guide-with-8-practical-examples/?sh=2c6e82058d4b")
-                                engine = pyttsx3.init()
-                                engine.say("Deep learning is a subset of machine learning where artificial neural networks, algorithms inspired by the human brain, learn from large amounts of data..")
-                                engine.runAndWait()
+                        # elif MyText == "artificial intelligence" or MyText == "what is artificial intelligence":
+                        #         webbrowser.open_new_tab("https://en.wikipedia.org/wiki/Artificial_intelligence")
+                        #         engine = pyttsx3.init()
+                        #         engine.say("Artificial Intelligence is Technique that mimics Human Behaviour.It is widely used today in every field.")
+                        #         engine.runAndWait()
+                        # elif MyText == "deep learning" or MyText == "what is deep learning":
+                        #         webbrowser.open_new_tab("https://www.forbes.com/sites/bernardmarr/2018/10/01/what-is-deep-learning-ai-a-simple-guide-with-8-practical-examples/?sh=2c6e82058d4b")
+                        #         engine = pyttsx3.init()
+                        #         engine.say("Deep learning is a subset of machine learning where artificial neural networks, algorithms inspired by the human brain, learn from large amounts of data..")
+                        #         engine.runAndWait()
                         elif MyText == "open blackboard" or MyText == "blackboard":
                                 webbrowser.open_new_tab("https://cuchd.blackboard.com/?new_loc=%2Fultra%2Fcourse")
                                 engine = pyttsx3.init()
@@ -117,6 +118,11 @@ while(text_length < 80):
                                 engine = pyttsx3.init()
                                 engine.say("OK,Bye have a good day")
                                 engine.runAndWait()
+                        else:
+                                engine = pyttsx3.init()
+                                engine.say(wikipedia.summary(MyText))
+                                engine.runAndWait()
+
         except sr.RequestError as e:
                 print("Could not request results; {0}".format(e))
         except sr.UnknownValueError:
