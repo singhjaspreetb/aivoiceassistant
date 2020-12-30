@@ -16,7 +16,7 @@ import twilio  # pip install twilio
 from playsound import playsound  # pip install playsound
 
 # setting speak engine
-
+scr = 0
 engine = pyttsx3.init()
 engine.setProperty('rate', 190)
 voices = engine.getProperty('voices')
@@ -147,18 +147,17 @@ def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login("user-name@xyz.com", "pwd")
-    server.sendmail("user-name@xyz.com", to, content)
+    server.login("virtualaiassistant@gmail.com", "ourproject")
+    server.sendmail("virtualaiassistant@gmail.com", to, content)
     server.close()
 
 
 #screenshot function
 
-def screenshot():
+def screenshot(scr):
+    scr=str(scr)
     img = pyautogui.screenshot()
-    img.save(
-        "D:\\AI lab\\assistant\\ScreenShot\\ss.png"
-    )
+    img.save("D:\\AI lab\\assistant\\ScreenShot\\ss"+scr+".png")
 
 
 #battery and cpu usage
@@ -184,7 +183,8 @@ def jokes():
 #weather condition
 
 def weather():
-    api_key = "YOUR-API_KEY"  # generate your own api key from open weather
+    # generate your own api key from open weather
+    api_key = "051f0afe43110a2e96604e43047e2b41"
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
     speak("tell me which city")
     city_name = takeCommand()
@@ -244,14 +244,9 @@ if __name__ == "__main__":
 
 #personal info
 
-        elif ("tell me about yourself" in query):
+        elif ("tell me about yourself" in query or "yourself" in query or "about you" in query or "who are you" in query):
             personal()
-        elif ("about you" in query):
-            personal()
-        elif ("who are you" in query):
-            personal()
-        elif ("yourself" in query):
-            personal()
+        
 
         elif ("developer" in query or "tell me about your developer" in query
               or "father" in query or "who develop you" in query
@@ -262,15 +257,16 @@ if __name__ == "__main__":
 #searching on wikipedia
 
         elif ('wikipedia' in query or 'what' in query or 'who' in query
-              or 'when' in query or 'where' in query):
+              or 'when' in query or 'where' in query or 'how' in query):
             speak("searching...")
-            query = query.replace("wikipedia", "")
-            query = query.replace("search", "")
-            query = query.replace("what", "")
-            query = query.replace("when", "")
-            query = query.replace("where", "")
-            query = query.replace("who", "")
-            query = query.replace("is", "")
+            query = query.replace("wikipedia", " ")
+            query = query.replace("search", " ")
+            query = query.replace("what", " ")
+            query = query.replace("when", " ")
+            query = query.replace("where", " ")
+            query = query.replace("who", " ")
+            query = query.replace("is", " ")
+            query = query.replace("how", " ")
             result = wikipedia.summary(query, sentences=2)
             print(query)
             print(result)
@@ -282,9 +278,9 @@ if __name__ == "__main__":
             try:
                 speak("What is the message for the email")
                 content = takeCommand()
-                speak("Too Whom")
-                to = takeCommand()
-                sendEmail(to, content)
+                speak("Enter the mail addres")
+                to = input("Enter the mail: ")
+                sendEmail(to, content)  
                 speak("Email has sent")
             except Exception as e:
                 print(e)
@@ -292,11 +288,12 @@ if __name__ == "__main__":
 
 #search on goole
 
-        elif ("search on google" in query or "open website" in query):
+        elif ("search on google" in query):
             speak("What should i search or open?")
             chromepath = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
             search = takeCommand().lower()
-            wb.get(chromepath).open_new_tab(search + '.com')
+            wb.open_new_tab(search)
+            wb.get(chromepath).open_new_tab('https://www.google.com/search?q='+search+'&oq='+search+'&aqs=chrome..69i57j46i433l2j0i433l2j69i60l2j69i61.2143j0j4&sourceid=chrome&ie=UTF-8')
 
 #sysytem logout/ shut down etc
 
@@ -327,7 +324,9 @@ if __name__ == "__main__":
 #screenshot
 
         elif ("screenshot" in query):
-            screenshot()
+            screenshot(scr)
+            scr = int(scr)
+            scr += 1
             speak("Done!")
 
 #cpu and battery usage
@@ -356,6 +355,7 @@ if __name__ == "__main__":
             i can tell you battery and cpu usage,
             i can create the reminder list,
             i can take screenshots,
+            i can repeat you,
             i can send email to your boss or family or your friend,
             i can shut down or logout or hibernate your system,
             i can tell you non funny jokes,
@@ -383,16 +383,16 @@ if __name__ == "__main__":
 #changing voice
 
         elif ("voice" in query):
-            speak("for female say female and, for male say male")
+            speak("for female say female and, for male say men")
             q = takeCommand()
             if ("female" in q):
                 voice_change(1)
-            elif ("male" in q):
+            elif ("men" in q):
                 voice_change(0)
-        elif ("male" in query or "female" in query):
+        elif ("men" in query or "female" in query):
             if ("female" in query):
                 voice_change(1)
-            elif ("male" in query):
+            elif ("men" in query):
                 voice_change(0)
 
 #exit function
@@ -428,7 +428,7 @@ if __name__ == "__main__":
 
 #play songs
 
-        elif 'play music' in query or "play song" in query or "songs" in query:
+        elif 'play music' in query or "play song" in query or "song" in query:
             speak("Online or Offline")
             choice=takeCommand()
 
@@ -442,8 +442,6 @@ if __name__ == "__main__":
                 # music_dir = "----------------"
                 music_dir = "D:\\Songs"
                 songs = os.listdir(music_dir)
-                os.startfile(os.path.join(music_dir, songs[5]))
-                # random = os.startfile(os.path.join(music_dir, songs[6]))
-                # files = os.listdir(music_dir)
-                # d = random.choice(files)
-                # os.startfile(d)
+                #os.startfile(os.path.join(music_dir, songs[5]))
+                random = os.startfile(os.path.join(music_dir, songs[6]))
+                files = os.listdir(music_dir)
