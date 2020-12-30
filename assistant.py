@@ -120,7 +120,7 @@ while(text_length < 80):
                                 engine.runAndWait()
                         else:
                                 engine = pyttsx3.init()
-                                engine.say(wikipedia.summary(MyText))
+                                engine.say(wikipedia.summary(MyText, sentences=2))
                                 engine.runAndWait()
 
         except sr.RequestError as e:
