@@ -442,7 +442,7 @@ if __name__ == "__main__":
                 # music_dir = "----------------"
                 music_dir = "D:\\Songs"
                 songs = os.listdir(music_dir)
-                os.startfile(os.path.join(music_dir, songs[1]))
+                os.startfile(os.path.join(music_dir, songs[5]))
                 # random = os.startfile(os.path.join(music_dir, songs[6]))
                 # files = os.listdir(music_dir)
                 # d = random.choice(files)
