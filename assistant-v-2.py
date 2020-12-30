@@ -27,8 +27,7 @@ engine.setProperty('volume', 1)
 #change voice
 
 def voice_change(v):
-    x = int(v)
-    engine.setProperty('voice', voices[x].id)
+    engine.setProperty('voice', voices[v].id)
     speak("done sir")
 
 
@@ -382,18 +381,15 @@ if __name__ == "__main__":
 
 #changing voice
 
-        elif ("voice" in query):
-            speak("for female say female and, for male say men")
+        elif ("voice" in query or 'boy' in query or 'female' in query or 'male' in query or 'girl' in query):
+            speak("for female say female, for male say boy")
             q = takeCommand()
             if ("female" in q):
-                voice_change(1)
-            elif ("men" in q):
-                voice_change(0)
-        elif ("men" in query or "female" in query):
-            if ("female" in query):
-                voice_change(1)
-            elif ("men" in query):
-                voice_change(0)
+                v=1
+                voice_change(v)
+            elif ("boy" in q):
+                v=0
+                voice_change(v)
 
 #exit function
 
