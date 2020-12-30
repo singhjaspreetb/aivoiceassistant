@@ -12,17 +12,25 @@ import requests
 import json  # inbuilt
 import random
 import threading
+import cv2 
+import time as tim
 import twilio  # pip install twilio
 from playsound import playsound  # pip install playsound
+import matplotlib.pyplot as plt #pip install maplotlib
+from deepface import DeepFace #pip install deepface
+from PIL import Image
+
 
 # setting speak engine
-scr = 0
+
 engine = pyttsx3.init()
 engine.setProperty('rate', 190)
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
 engine.setProperty('volume', 1)
 
+scr = 0
+imgno = 0
 
 #change voice
 
@@ -220,6 +228,60 @@ def personal():
     speak("I am Jarvis, version 2 point O, I am an AI assistent, I am developed by Jaspreet")
     speak("Now i hope you know me")
 
+# capturing image
+
+def takephoto(imgno):
+    #method one
+    imgno = str(imgno)
+    camera_port = 0
+    camera = cv2.VideoCapture(camera_port)
+    tim.sleep(0.1)  
+    return_value, image = camera.read()
+    cv2.imwrite("D:\\AI lab\\assistant\\Photo\\img"+imgno+".png", image)
+    del(camera)
+
+    #method two
+    # speak("Click s for take image")
+    # camera = cv2.VideoCapture(0)
+    # while True:
+    #     return_value, image = camera.read()
+    #     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    #     cv2.imshow('image', gray)
+    #     if cv2.waitKey(1) & 0xFF == ord('s'):
+    #         cv2.imwrite('pic'+imgno+'.jpg', image)
+    #         time.sleep(0.1)
+    #         break
+    # camera.release()
+    # cv2.destroyAllWindows()
+
+# analyze me
+def analyzeme():
+    imgno=0
+    takephoto(imgno)
+
+    img_path = r"D:\\AI lab\\assistant\\Photo\\img0.png"
+
+    img = cv2.imread(img_path)
+
+    plt.imshow(img[:, :, ::-1])
+
+    image = Image.open(img_path)
+    image.show()
+
+    demography = DeepFace.analyze(img_path)
+
+    print("Age: ", int(demography["age"]))
+    speak("Your Age is "+str(int(demography["age"])))
+
+    print("Gender: ", demography["gender"])
+    speak("Your Gender is "+demography["gender"])
+
+    print("Emotion: ", demography["dominant_emotion"])
+    speak("Your are is "+demography["dominant_emotion"])
+
+    print("Race: ", demography["dominant_race"])
+    speak("Your race is "+demography["dominant_race"])
+
 
 if __name__ == "__main__":
     wishme()
@@ -235,6 +297,13 @@ if __name__ == "__main__":
 
         elif ('date' in query):
             date()
+#photo
+
+        elif ( 'take photo' in query or 'caputre image' in query):
+            takephoto(imgno)
+            imgno=int(imgno)
+            imgno+=1
+            speak("Done!")
 
 #repeat me
 
@@ -344,12 +413,19 @@ if __name__ == "__main__":
         elif ("weather" in query or "temperature" in query):
             weather()
 
+#analyze me
+
+        elif('analyze me' in query or 'scan me' in query):
+            analyzeme()
+            speak("Done!")
 #jarvis features
 
         elif ("tell me your powers" in query or "help" in query
               or "features" in query):
             features = ''' i can help to do lot many things like..
+            i can analyze scan you and able to tell you emotion,gender,age or race,
             i can tell you the current time and date,
+            i can click your photo,
             i can tell you the current weather,
             i can tell you battery and cpu usage,
             i can create the reminder list,
