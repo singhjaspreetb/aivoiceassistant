@@ -307,15 +307,6 @@ if __name__ == "__main__":
         elif ("shut down" in query):
             os.system("shutdown /r /t 1")
 
-#play songs
-
-        elif ("play songs" in query):
-            speak("Playing...")
-            songs_dir = "D:\\Songs"
-            songs = os.listdir(songs_dir)
-            os.startfile(os.path.join(songs_dir, songs[1]))
-            quit()
-
 #reminder function
 
         elif ("create a reminder list" in query or "reminder" in query):
@@ -435,15 +426,24 @@ if __name__ == "__main__":
         elif "who made you" in query or "who created you" in query:
             speak("I have been created by Jaspreet.")
 
-        elif 'play music' in query or "play song" in query:
+#play songs
+
+        elif 'play music' in query or "play song" in query or "songs" in query:
+            speak("Online or Offline")
+            choice=takeCommand()
+
             speak("Here you go with music")
+            speak("Playing...")
+            if "online" in choice:
+                
+                wb.open_new_tab("https://music.youtube.com/watch?v=HC3-gSNbx00&list=RDAMVMHC3-gSNbx00")
 
-            # music_dir = "----------------"
-
-            music_dir = "D:\\Songs"
-            songs = os.listdir(music_dir)
-            print(songs)
-            random = os.startfile(os.path.join(music_dir, songs[6]))
-            files = os.listdir("D:\\Songs")
-            d = random.choice(files)
-            os.startfile(d)
+            elif "offline" in choice:
+                # music_dir = "----------------"
+                music_dir = "D:\\Songs"
+                songs = os.listdir(music_dir)
+                os.startfile(os.path.join(music_dir, songs[1]))
+                # random = os.startfile(os.path.join(music_dir, songs[6]))
+                # files = os.listdir(music_dir)
+                # d = random.choice(files)
+                # os.startfile(d)
