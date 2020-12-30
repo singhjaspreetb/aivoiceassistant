@@ -311,7 +311,7 @@ if __name__ == "__main__":
 
         elif ("play songs" in query):
             speak("Playing...")
-            songs_dir = "C:\\Music"
+            songs_dir = "D:\\Songs"
             songs = os.listdir(songs_dir)
             os.startfile(os.path.join(songs_dir, songs[1]))
             quit()
@@ -430,7 +430,7 @@ if __name__ == "__main__":
             speak("If you talk then definately you are human.")
 
         elif "why you came to world" in query:
-            speak("Thanks to Ananya. further It's a secret")
+            speak("Thanks to Jaspreet. further It's a secret")
 
         elif "who made you" in query or "who created you" in query:
             speak("I have been created by Jaspreet.")
@@ -440,10 +440,10 @@ if __name__ == "__main__":
 
             # music_dir = "----------------"
 
-            music_dir = ""
+            music_dir = "D:\\Songs"
             songs = os.listdir(music_dir)
             print(songs)
             random = os.startfile(os.path.join(music_dir, songs[6]))
-            files = os.listdir("")
+            files = os.listdir("D:\\Songs")
             d = random.choice(files)
             os.startfile(d)
