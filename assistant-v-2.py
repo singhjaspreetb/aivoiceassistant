@@ -12,12 +12,12 @@ import requests
 import json  # inbuilt
 import random
 import threading
-import cv2 
+import cv2
 import time as tim
 import twilio  # pip install twilio
 from playsound import playsound  # pip install playsound
-import matplotlib.pyplot as plt #pip install maplotlib
-from deepface import DeepFace #pip install deepface
+import matplotlib.pyplot as plt  # pip install maplotlib
+from deepface import DeepFace  # pip install deepface
 from PIL import Image
 
 
@@ -33,6 +33,7 @@ scr = 0
 imgno = 0
 
 #change voice
+
 
 def voice_change(v):
     engine.setProperty('voice', voices[v].id)
@@ -162,7 +163,7 @@ def sendEmail(to, content):
 #screenshot function
 
 def screenshot(scr):
-    scr=str(scr)
+    scr = str(scr)
     img = pyautogui.screenshot()
     img.save("D:\\AI lab\\assistant\\ScreenShot\\ss"+scr+".png")
 
@@ -230,12 +231,13 @@ def personal():
 
 # capturing image
 
+
 def takephoto(imgno):
     #method one
     imgno = str(imgno)
     camera_port = 0
     camera = cv2.VideoCapture(camera_port)
-    tim.sleep(0.1)  
+    tim.sleep(0.1)
     return_value, image = camera.read()
     cv2.imwrite("D:\\AI lab\\assistant\\Photo\\img"+imgno+".png", image)
     del(camera)
@@ -255,8 +257,10 @@ def takephoto(imgno):
     # cv2.destroyAllWindows()
 
 # analyze me
+
+
 def analyzeme():
-    imgno=0
+    imgno = 0
     takephoto(imgno)
 
     img_path = r"D:\\AI lab\\assistant\\Photo\\img0.png"
@@ -299,10 +303,10 @@ if __name__ == "__main__":
             date()
 #photo
 
-        elif ( 'take photo' in query or 'caputre image' in query):
+        elif ('take photo' in query or 'caputre image' in query):
             takephoto(imgno)
-            imgno=int(imgno)
-            imgno+=1
+            imgno = int(imgno)
+            imgno += 1
             speak("Done!")
 
 #repeat me
@@ -314,7 +318,6 @@ if __name__ == "__main__":
 
         elif ("tell me about yourself" in query or "yourself" in query or "about you" in query or "who are you" in query):
             personal()
-        
 
         elif ("developer" in query or "tell me about your developer" in query
               or "father" in query or "who develop you" in query
@@ -348,20 +351,30 @@ if __name__ == "__main__":
                 content = takeCommand()
                 speak("Enter the mail addres")
                 to = input("Enter the mail: ")
-                sendEmail(to, content)  
+                sendEmail(to, content)
                 speak("Email has sent")
             except Exception as e:
                 print(e)
                 speak("Unable to send email check the address of the recipient")
-
-#search on goole
-
-        elif ("search on google" in query):
+        
+# open website
+        elif ('open website' in query):
             speak("What should i search or open?")
             chromepath = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
             search = takeCommand().lower()
-            wb.open_new_tab(search)
-            wb.get(chromepath).open_new_tab('https://www.google.com/search?q='+search+'&oq='+search+'&aqs=chrome..69i57j46i433l2j0i433l2j69i60l2j69i61.2143j0j4&sourceid=chrome&ie=UTF-8')
+            # wb.open_new_tab(search)
+            wb.get(chromepath).open_new_tab(search+'.com')
+
+
+#search on goole
+
+        elif ("search on google" in query or 'search' in query or 'google' in query):
+            speak("What should i search or open?")
+            chromepath = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+            search = takeCommand().lower()
+            # wb.open_new_tab(search)
+            wb.get(chromepath).open_new_tab('https://www.google.com/search?q='+search+'&oq='+search +
+                                            '&aqs=chrome..69i57j46i433l2j0i433l2j69i60l2j69i61.2143j0j4&sourceid=chrome&ie=UTF-8')
 
 #sysytem logout/ shut down etc
 
@@ -461,10 +474,10 @@ if __name__ == "__main__":
             speak("for female say female, for male say boy")
             q = takeCommand()
             if ("female" in q):
-                v=1
+                v = 1
                 voice_change(v)
             elif ("boy" in q):
-                v=0
+                v = 0
                 voice_change(v)
 
 #exit function
@@ -502,13 +515,14 @@ if __name__ == "__main__":
 
         elif 'play music' in query or "play song" in query or "song" in query:
             speak("Online or Offline")
-            choice=takeCommand()
+            choice = takeCommand()
 
             speak("Here you go with music")
             speak("Playing...")
             if "online" in choice:
-                
-                wb.open_new_tab("https://music.youtube.com/watch?v=HC3-gSNbx00&list=RDAMVMHC3-gSNbx00")
+
+                wb.open_new_tab(
+                    "https://music.youtube.com/watch?v=HC3-gSNbx00&list=RDAMVMHC3-gSNbx00")
 
             elif "offline" in choice:
                 # music_dir = "----------------"
