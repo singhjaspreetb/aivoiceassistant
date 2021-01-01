@@ -2,7 +2,10 @@
 
 <h3>That can do a lot of things for you</h3>
 
-<p>i can give answer of of your all question,<br>
+<h5>Command --> help </h5>
+
+<p>i can help to do lot many things like...<br>
+i can give answer of of your all question,<br>
 i can analyze you and able to tell yourr̥ emotion, gender, age or race,<br>
 i can tell you the current time and date,<br>
 i can click your photo,<br>
