@@ -361,7 +361,7 @@ if __name__ == "__main__":
 # open website
 
         elif ('open website' in query):
-            speak("What should i search or open?")
+            speak("Tell me the name of Website?")
             chromepath = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
             search = takeCommand().lower()
             # wb.open_new_tab(search)
