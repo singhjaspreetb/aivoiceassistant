@@ -2,9 +2,39 @@
 
 <h3>That can do a lot of things for you</h3>
 
-<h5>Command --> help </h5>
+<h5>Some Commands :-</h5>
 
-<p>i can help to do lot many things like...<br>
+<p>
+Hi/hello<br>
+Tell me the time<br>
+Tell me the date<br>
+Take photo<br>
+Repeat me<br>
+Tell me about yourself<br>
+Tell me about your Developer<br>
+What/whare/when/how is/to ---------<br>
+Send Email<br>
+Open Website<br>
+Search on Google<br>
+logut<br>
+restart<br>
+shut down<br>
+create a reminder<br>
+Remember me<br>
+Take Screenshot<br>
+cpu and battery usage<br>
+tell me a joke<br>
+show me weather reports<br>
+Scan me<br>
+Help me<br>
+Change your Voice<br>
+Play music/song<br>
+</p>
+
+<h5>Help Command</h5>
+
+<p>
+i can help to do lot many things like...<br>
 i can give answer of of your all question,<br>
 i can analyze you and able to tell yourr̥ emotion, gender, age or race,<br>
 i can tell you the current time and date,<br>
@@ -21,4 +51,5 @@ i can tell you non funny jokes,<br>
 i can open any website,<br>
 i can search on google,<br>
 i can search the thing on wikipedia,<br>
-i can change my voice from male to female and vice-versa.</p>
+i can change my voice from male to female and vice-versa.
+</p>
