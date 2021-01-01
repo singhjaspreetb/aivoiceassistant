@@ -1,25 +1,44 @@
 import pyttsx3  # pip install pyttsx3
-import datetime  # module
-import speech_recognition as sr
-import wikipedia  # pip install wikipedia
-import smtplib  # pip install amtplib
-import webbrowser as wb
-import os  # inbuilt
-import pyautogui  # pip install pyautogyi
-import psutil  # pip install psutil
-import pyjokes  # pip install pyjokes
-import requests
-import json  # inbuilt
-import random
-import threading
-import cv2
-import time as tim
-import twilio  # pip install twilio
-from playsound import playsound  # pip install playsound
-import matplotlib.pyplot as plt  # pip install maplotlib
-from deepface import DeepFace  # pip install deepface
-from PIL import Image
 
+import datetime  # module
+
+import speech_recognition as sr
+
+import wikipedia  # pip install wikipedia
+
+import smtplib  # pip install amtplib
+
+import webbrowser as wb
+
+import os  # inbuilt
+
+import pyautogui  # pip install pyautogyi
+
+import psutil  # pip install psutil
+
+import pyjokes  # pip install pyjokes
+
+import requests
+
+import json  # inbuilt
+
+import random
+
+import threading
+
+import cv2
+
+import time as tim
+
+import twilio  # pip install twilio
+
+from playsound import playsound  # pip install playsound
+
+import matplotlib.pyplot as plt  # pip install maplotlib
+
+from deepface import DeepFace  # pip install deepface
+
+from PIL import Image
 
 # setting speak engine
 
@@ -34,11 +53,9 @@ imgno = 0
 
 #change voice
 
-
 def voice_change(v):
     engine.setProperty('voice', voices[v].id)
     speak("done sir")
-
 
 #speak function
 
@@ -46,14 +63,12 @@ def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
-
 #time function
 
 def time():
     Time = datetime.datetime.now().strftime("%H:%M:%S")
     speak("The current time is")
     speak(Time)
-
 
 #date function
 
@@ -67,7 +82,6 @@ def date():
     speak(year)
 
 # checktime function
-
 
 def checktime(tt):
     hour = datetime.datetime.now().hour
@@ -94,7 +108,6 @@ def checktime(tt):
     else:
         speak("it's night sir!")
 
-
 #welcome function
 
 def wishme():
@@ -111,7 +124,6 @@ def wishme():
 
     speak("Jarvis at your service, Please tell me how can i help you?")
 
-
 def wishme_end():
     speak("signing off")
     hour = datetime.datetime.now().hour
@@ -124,7 +136,6 @@ def wishme_end():
     else:
         speak("Goodnight.. Sweet dreams")
     quit()
-
 
 #command by user function
 
@@ -148,7 +159,6 @@ def takeCommand():
 
     return query
 
-
 #sending email function
 
 def sendEmail(to, content):
@@ -159,14 +169,12 @@ def sendEmail(to, content):
     server.sendmail("virtualaiassistant@gmail.com", to, content)
     server.close()
 
-
 #screenshot function
 
 def screenshot(scr):
     scr = str(scr)
     img = pyautogui.screenshot()
     img.save("D:\\AI lab\\assistant\\ScreenShot\\ss"+scr+".png")
-
 
 #battery and cpu usage
 
@@ -179,14 +187,12 @@ def cpu():
     speak(battery.percent)
     print("battery is at:" + str(battery.percent))
 
-
 #joke function
 
 def jokes():
     j = pyjokes.get_joke()
     print(j)
     speak(j)
-
 
 #weather condition
 
@@ -218,19 +224,16 @@ def weather():
 
 #repeat function
 
-
 def repeat():
     speak("What I have to repeat")
     rep = takeCommand()
     speak(rep)
-
 
 def personal():
     speak("I am Jarvis, version 2 point O, I am an AI assistent, I am developed by Jaspreet")
     speak("Now i hope you know me")
 
 # capturing image
-
 
 def takephoto(imgno):
     #method one
@@ -258,7 +261,6 @@ def takephoto(imgno):
 
 # analyze me
 
-
 def analyzeme():
     imgno = 0
     takephoto(imgno)
@@ -285,7 +287,6 @@ def analyzeme():
 
     print("Race: ", demography["dominant_race"])
     speak("Your race is "+demography["dominant_race"])
-
 
 if __name__ == "__main__":
     wishme()
@@ -358,13 +359,13 @@ if __name__ == "__main__":
                 speak("Unable to send email check the address of the recipient")
         
 # open website
+
         elif ('open website' in query):
             speak("What should i search or open?")
             chromepath = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
             search = takeCommand().lower()
             # wb.open_new_tab(search)
             wb.get(chromepath).open_new_tab(search+'.com')
-
 
 #search on goole
 
@@ -373,8 +374,7 @@ if __name__ == "__main__":
             chromepath = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
             search = takeCommand().lower()
             # wb.open_new_tab(search)
-            wb.get(chromepath).open_new_tab('https://www.google.com/search?q='+search+'&oq='+search +
-                                            '&aqs=chrome..69i57j46i433l2j0i433l2j69i60l2j69i61.2143j0j4&sourceid=chrome&ie=UTF-8')
+            wb.get(chromepath).open_new_tab('https://www.google.com/search?q='+search+'&oq='+search +'&aqs=chrome..69i57j46i433l2j0i433l2j69i60l2j69i61.2143j0j4&sourceid=chrome&ie=UTF-8')
 
 #sysytem logout/ shut down etc
 
@@ -431,15 +431,18 @@ if __name__ == "__main__":
         elif('analyze me' in query or 'scan me' in query):
             analyzeme()
             speak("Done!")
+
 #jarvis features
 
         elif ("tell me your powers" in query or "help" in query
               or "features" in query):
             features = ''' i can help to do lot many things like..
-            i can analyze scan you and able to tell you emotion,gender,age or race,
+            i can give answer of of your all question,
+            i can analyze you and able to tell yourr̥ emotion, gender, age or race,
             i can tell you the current time and date,
             i can click your photo,
-            i can tell you the current weather,
+            i can play songs for you online or offlie,
+            i can tell you the current weather of any location,
             i can tell you battery and cpu usage,
             i can create the reminder list,
             i can take screenshots,
@@ -448,6 +451,7 @@ if __name__ == "__main__":
             i can shut down or logout or hibernate your system,
             i can tell you non funny jokes,
             i can open any website,
+            i can search on google,
             i can search the thing on wikipedia,
             i can change my voice from male to female and vice-versa
             And yes one more thing, My boss is working on this system to add more features...,
