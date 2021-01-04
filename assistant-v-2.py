@@ -431,6 +431,7 @@ if __name__ == "__main__":
         elif('analyze me' in query or 'scan me' in query):
             analyzeme()
             speak("Done!")
+            
 
 #jarvis features
 
