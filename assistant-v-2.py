@@ -1,3 +1,4 @@
+import subprocess
 import pyttsx3  # pip install pyttsx3
 
 import datetime  # module
@@ -51,26 +52,30 @@ engine.setProperty('volume', 1)
 scr = 0
 imgno = 0
 
-#change voice
+# change voice
+
 
 def voice_change(v):
     engine.setProperty('voice', voices[v].id)
     speak("done sir")
 
-#speak function
+# speak function
+
 
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
-#time function
+# time function
+
 
 def time():
     Time = datetime.datetime.now().strftime("%H:%M:%S")
     speak("The current time is")
     speak(Time)
 
-#date function
+# date function
+
 
 def date():
     year = int(datetime.datetime.now().year)
@@ -82,6 +87,7 @@ def date():
     speak(year)
 
 # checktime function
+
 
 def checktime(tt):
     hour = datetime.datetime.now().hour
@@ -108,7 +114,8 @@ def checktime(tt):
     else:
         speak("it's night sir!")
 
-#welcome function
+# welcome function
+
 
 def wishme():
     speak("Hey, Welcome Back")
@@ -124,6 +131,7 @@ def wishme():
 
     speak("Jarvis at your service, Please tell me how can i help you?")
 
+
 def wishme_end():
     speak("signing off")
     hour = datetime.datetime.now().hour
@@ -137,7 +145,8 @@ def wishme_end():
         speak("Goodnight.. Sweet dreams")
     quit()
 
-#command by user function
+# command by user function
+
 
 def takeCommand():
     r = sr.Recognizer()
@@ -149,8 +158,8 @@ def takeCommand():
     try:
         print("Recognizing...")
         query = r.recognize_google(audio, language='en-in')
-        #speak(query)
-        #print(query)
+        # speak(query)
+        print(query)
     except Exception as e:
         print(e)
         speak("Say that again please...")
@@ -159,7 +168,8 @@ def takeCommand():
 
     return query
 
-#sending email function
+# sending email function
+
 
 def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
@@ -169,14 +179,16 @@ def sendEmail(to, content):
     server.sendmail("virtualaiassistant@gmail.com", to, content)
     server.close()
 
-#screenshot function
+# screenshot function
+
 
 def screenshot(scr):
     scr = str(scr)
     img = pyautogui.screenshot()
     img.save("D:\\AI lab\\assistant\\ScreenShot\\ss"+scr+".png")
 
-#battery and cpu usage
+# battery and cpu usage
+
 
 def cpu():
     usage = str(psutil.cpu_percent())
@@ -187,14 +199,16 @@ def cpu():
     speak(battery.percent)
     print("battery is at:" + str(battery.percent))
 
-#joke function
+# joke function
+
 
 def jokes():
     j = pyjokes.get_joke()
     print(j)
     speak(j)
 
-#weather condition
+# weather condition
+
 
 def weather():
     # generate your own api key from open weather
@@ -222,12 +236,14 @@ def weather():
     else:
         speak(" City Not Found ")
 
-#repeat function
+# repeat function
+
 
 def repeat():
     speak("What I have to repeat")
     rep = takeCommand()
     speak(rep)
+
 
 def personal():
     speak("I am Jarvis, version 2 point O, I am an AI assistent, I am developed by Jaspreet")
@@ -235,8 +251,9 @@ def personal():
 
 # capturing image
 
+
 def takephoto(imgno):
-    #method one
+    # method one
     imgno = str(imgno)
     camera_port = 0
     camera = cv2.VideoCapture(camera_port)
@@ -245,7 +262,7 @@ def takephoto(imgno):
     cv2.imwrite("D:\\AI lab\\assistant\\Photo\\img"+imgno+".png", image)
     del(camera)
 
-    #method two
+    # method two
     # speak("Click s for take image")
     # camera = cv2.VideoCapture(0)
     # while True:
@@ -260,6 +277,7 @@ def takephoto(imgno):
     # cv2.destroyAllWindows()
 
 # analyze me
+
 
 def analyzeme():
     imgno = 0
@@ -288,21 +306,62 @@ def analyzeme():
     print("Race: ", demography["dominant_race"])
     speak("Your race is "+demography["dominant_race"])
 
+# wifi pswd function
+
+
+def wifi():
+
+    # first we will import the subprocess module
+
+    # now we will store the profiles data in "data" variable by
+    # running the 1st cmd command using subprocess.check_output
+    data = subprocess.check_output(
+        ['netsh', 'wlan', 'show', 'profiles']).decode('utf-8').split('\n')
+
+    # now we will store the profile by converting them to list
+    profiles = [i.split(":")[1][1:-1] for i in data if "All User Profile" in i]
+
+    # using for loop in python we are checking and printing the wifi
+    # passwords if they are available using the 2nd cmd command
+    for i in profiles:
+        # running the 2nd cmd command to check passwords
+        results = subprocess.check_output(
+            ['netsh', 'wlan', 'show', 'profile', i, 'key=clear']).decode('utf-8').split('\n')
+    # storing passwords after converting them to list
+        results = [b.split(":")[1][1:-1]
+                   for b in results if "Key Content" in b]
+    # printing the profiles(wifi name) with their passwords using
+    # try and except method
+        speak("Here is Your Passwords")
+        try:
+            print("{:<30}|  {:<}".format(i, results[0]))
+            speak(i)
+            speak(results)
+        except IndexError:
+            print("{:<30}|  {:<}".format(i, ""))
+
+
 if __name__ == "__main__":
     wishme()
     while (True):
         query = takeCommand().lower()
 
-        #time
+        # time
 
         if ('time' in query):
             time()
 
-#date
+# date
 
         elif ('date' in query):
             date()
-#photo
+
+# wifi
+
+        elif ('Wi-Fi' in query or 'Wi-Fi password' in query or 'wi-fi password' in query or 'wi-fi' in query):
+            wifi()
+
+# photo
 
         elif ('take photo' in query or 'caputre image' in query):
             takephoto(imgno)
@@ -310,12 +369,12 @@ if __name__ == "__main__":
             imgno += 1
             speak("Done!")
 
-#repeat me
+# repeat me
 
         elif('repeat' in query):
             repeat()
 
-#personal info
+# personal info
 
         elif ("tell me about yourself" in query or "yourself" in query or "about you" in query or "who are you" in query):
             personal()
@@ -326,7 +385,7 @@ if __name__ == "__main__":
             res = open("about.txt", 'r')
             speak("here is the details: " + res.read())
 
-#searching on wikipedia
+# searching on wikipedia
 
         elif ('wikipedia' in query or 'what' in query or 'who' in query
               or 'when' in query or 'where' in query or 'how' in query):
@@ -344,7 +403,7 @@ if __name__ == "__main__":
             print(result)
             speak(result)
 
-#sending email
+# sending email
 
         elif ("send email" in query):
             try:
@@ -357,7 +416,7 @@ if __name__ == "__main__":
             except Exception as e:
                 print(e)
                 speak("Unable to send email check the address of the recipient")
-        
+
 # open website
 
         elif ('open website' in query):
@@ -367,16 +426,17 @@ if __name__ == "__main__":
             # wb.open_new_tab(search)
             wb.get(chromepath).open_new_tab(search+'.com')
 
-#search on goole
+# search on goole
 
         elif ("search on google" in query or 'search' in query or 'google' in query):
             speak("What should i search or open?")
             chromepath = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
             search = takeCommand().lower()
             # wb.open_new_tab(search)
-            wb.get(chromepath).open_new_tab('https://www.google.com/search?q='+search+'&oq='+search +'&aqs=chrome..69i57j46i433l2j0i433l2j69i60l2j69i61.2143j0j4&sourceid=chrome&ie=UTF-8')
+            wb.get(chromepath).open_new_tab('https://www.google.com/search?q='+search+'&oq='+search +
+                                            '&aqs=chrome..69i57j46i433l2j0i433l2j69i60l2j69i61.2143j0j4&sourceid=chrome&ie=UTF-8')
 
-#sysytem logout/ shut down etc
+# sysytem logout/ shut down etc
 
         elif ("logout" in query):
             os.system("shutdown -1")
@@ -385,7 +445,7 @@ if __name__ == "__main__":
         elif ("shut down" in query):
             os.system("shutdown /r /t 1")
 
-#reminder function
+# reminder function
 
         elif ("create a reminder list" in query or "reminder" in query):
             speak("What is the reminder?")
@@ -396,13 +456,13 @@ if __name__ == "__main__":
             reminder_file.write(data)
             reminder_file.close()
 
-#reading reminder list
+# reading reminder list
 
         elif ("do you know anything" in query or "remember" in query):
             reminder_file = open("data.txt", 'r')
             speak("You said me to remember that: " + reminder_file.read())
 
-#screenshot
+# screenshot
 
         elif ("screenshot" in query):
             screenshot(scr)
@@ -410,30 +470,30 @@ if __name__ == "__main__":
             scr += 1
             speak("Done!")
 
-#cpu and battery usage
+# cpu and battery usage
 
         elif ("cpu and battery" in query or "battery" in query
               or "cpu" in query):
             cpu()
 
-#jokes
+# jokes
 
         elif ("tell me a joke" in query or "joke" in query):
             jokes()
 
-#weather
+# weather
 
         elif ("weather" in query or "temperature" in query):
             weather()
 
-#analyze me
+# analyze me
 
         elif('analyze me' in query or 'scan me' in query):
             analyzeme()
             speak("Done!")
-            
 
-#jarvis features
+
+# jarvis features
 
         elif ("tell me your powers" in query or "help" in query
               or "features" in query):
@@ -473,7 +533,7 @@ if __name__ == "__main__":
             else:
                 speak("what can i do for you")
 
-#changing voice
+# changing voice
 
         elif ("voice" in query or 'boy' in query or 'female' in query or 'male' in query or 'girl' in query):
             speak("for female say female, for male say boy")
@@ -485,7 +545,7 @@ if __name__ == "__main__":
                 v = 0
                 voice_change(v)
 
-#exit function
+# exit function
 
         elif ('i am done' in query or 'bye bye jarvis' in query
               or 'go offline jarvis' in query or 'bye' in query
@@ -516,7 +576,7 @@ if __name__ == "__main__":
         elif "who made you" in query or "who created you" in query:
             speak("I have been created by Jaspreet.")
 
-#play songs
+# play songs
 
         elif 'play music' in query or "play song" in query or "song" in query:
             speak("Online or Offline")

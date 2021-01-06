@@ -13,6 +13,7 @@ ________________________________________________________________________________
 Hi/hello<br>
 Tell me the time<br>
 Tell me the date<br>
+Show me wifi Passwords<br>
 Take photo<br>
 Repeat me<br>
 Tell me about yourself<br>
