@@ -430,12 +430,14 @@ if __name__ == "__main__":
 
 # search on goole
 
-        elif ("search on google" in query or 'search' in query or 'google' in query or 'jarvis' in query):
-            speak("What should i search ?")
+        elif ("search on google" in query or 'search' in query or 'google' in query or 'hey jarvis' in query):
+            query = query.replace("hey jarvis", " ")
+            query = query.replace("search", " ")
+            # speak("What should i search ?")
             chromepath = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-            search = takeCommand().lower()
+            # search = takeCommand().lower()
             # wb.open_new_tab(search)
-            wb.get(chromepath).open_new_tab('https://www.google.com/search?q='+search+'&oq='+search +
+            wb.get(chromepath).open_new_tab('https://www.google.com/search?q='+query+'&oq='+query +
                                             '&aqs=chrome..69i57j46i433l2j0i433l2j69i60l2j69i61.2143j0j4&sourceid=chrome&ie=UTF-8')
 
 # sysytem logout/ shut down etc
@@ -601,5 +603,6 @@ if __name__ == "__main__":
                 music_dir = "D:\\Songs"
                 songs = os.listdir(music_dir)
                 #os.startfile(os.path.join(music_dir, songs[5]))
-                random = os.startfile(os.path.join(music_dir, songs[6]))
+                random = os.startfile(os.path.join(music_dir, songs[1]))
                 files = os.listdir(music_dir)
+            speak("Hope you enjoy the music")
