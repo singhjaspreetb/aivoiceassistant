@@ -420,12 +420,13 @@ if __name__ == "__main__":
 
 # open website
 
-        elif ('open website' in query):
-            speak("Tell me the name of Website?")
+        elif ('open' in query):
+            query = query.replace("open", " ")
+            # speak("Tell me the name of Website?")
             chromepath = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-            search = takeCommand().lower()
+            # search = takeCommand().lower()
             # wb.open_new_tab(search)
-            wb.get(chromepath).open_new_tab(search+'.com')
+            wb.get(chromepath).open_new_tab(query+'.com')
 
 # search on goole
 

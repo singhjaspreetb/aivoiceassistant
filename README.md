@@ -25,6 +25,7 @@ Repeat me<br>
 Tell me about yourself<br>
 Tell me about your Developer<br>
 What/whare/when/how is/to ---------<br>
+wikipedia<br>
 Send Email<br>
 Open Website<br>
 Search on Google<br>
