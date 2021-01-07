@@ -429,8 +429,8 @@ if __name__ == "__main__":
 
 # search on goole
 
-        elif ("search on google" in query or 'search' in query or 'google' in query):
-            speak("What should i search or open?")
+        elif ("search on google" in query or 'search' in query or 'google' in query or 'jarvis' in query):
+            speak("What should i search ?")
             chromepath = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
             search = takeCommand().lower()
             # wb.open_new_tab(search)
@@ -486,6 +486,11 @@ if __name__ == "__main__":
 
         elif ("weather" in query or "temperature" in query):
             weather()
+
+#thanks function
+
+        elif('thanks' in query):
+            speak("Welcome Sir")
 
 # analyze me
 

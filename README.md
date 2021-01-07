@@ -11,6 +11,12 @@ ________________________________________________________________________________
 
 <p>
 Hi/hello<br>
+why you came to world<br>
+who i am<br>
+i love you<br>
+thanks<br>
+how are you<br>
+will you be my gf<br>
 Tell me the time<br>
 Tell me the date<br>
 Show me wifi Passwords<br>
@@ -35,6 +41,8 @@ Scan me<br>
 Help me<br>
 Change your Voice<br>
 Play music/song<br>
+go offline jarvis<br>
+i am done/bye<br>
 </p>
 
 _________________________________________________________________________________________________________________________________________________________________________________
