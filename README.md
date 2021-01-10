@@ -28,7 +28,8 @@ What/whare/when/how is/to ---------<br>
 wikipedia<br>
 Send Email<br>
 Open Website<br>
-Search on Google<br>
+hey jarvis 'query'<>
+Search on Google then 'query'<br>
 logut<br>
 restart<br>
 shut down<br>
