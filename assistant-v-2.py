@@ -438,7 +438,7 @@ if __name__ == "__main__":
 
 # time
 
-        if ('time' in query):
+        if ('current time' in query):
             time()
 
 # date
@@ -537,7 +537,7 @@ if __name__ == "__main__":
         elif("wikipedia" in query):
             # elif ('wikipedia' in query or 'what' in query or 'who' in query
             #       or 'when' in query or 'where' in query or 'how' in query):
-            #     speak("searching...")
+            speak("searching...")
             query = query.replace("wikipedia", " ")
             query = query.replace("search", " ")
             query = query.replace("what", " ")
@@ -702,5 +702,6 @@ if __name__ == "__main__":
 
 # wolfarmalpha
 
-        else:
+        elif ('what' in query or 'who' in query or 'when' in query or 'where' in query 
+        or 'how' in query or 'power' in query or 'convert' in query):
             wolf()
