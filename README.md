@@ -55,6 +55,8 @@ ________________________________________________________________________________
 <h5>Help Command</h5>
 
 <p>
+i can solve your simple math problems,
+i can tell corona precautions for you or for other also by their photo,
 i can help to do lot many things like...<br>
 i can give answer of of your all question,<br>
 i can analyze you and able to tell yourr̥ emotion, gender, age or race,<br>

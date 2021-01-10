@@ -1,6 +1,6 @@
 import subprocess
 
-import wolframalpha #pip install wolfarmalpha
+import wolframalpha  # pip install wolfarmalpha
 
 import pyttsx3  # pip install pyttsx3
 
@@ -54,7 +54,7 @@ engine.setProperty('volume', 1)
 
 scr = 0
 imgno = 0
-
+age = 0
 # change voice
 
 
@@ -279,6 +279,47 @@ def takephoto(imgno):
     # camera.release()
     # cv2.destroyAllWindows()
 
+# deedface
+
+
+def deepme():
+    imgno = 0
+    takephoto(imgno)
+
+    img_path = r"D:\\AI lab\\assistant\\Photo\\img0.png"
+
+    img = cv2.imread(img_path)
+
+    plt.imshow(img[:, :, ::-1])
+
+    image = Image.open(img_path)
+    image.show()
+
+    demography = DeepFace.analyze(img_path)
+
+    age = int(demography["age"])
+
+    print("Age: ", int(demography["age"]))
+    speak("Your Age is "+str(int(demography["age"])))
+
+
+def deepoth():
+    speak("Enter the path of image: ")
+    img_path = input("Enter the path of image: ")
+    img = cv2.imread(img_path)
+
+    plt.imshow(img[:, :, ::-1])
+
+    image = Image.open(img_path)
+    image.show()
+
+    demography = DeepFace.analyze(img_path)
+
+    age = int(demography["age"])
+
+    print("Age: ", int(demography["age"]))
+    speak("Your Age is "+str(int(demography["age"])))
+
 # analyze me
 
 
@@ -343,7 +384,9 @@ def wifi():
         except IndexError:
             print("{:<30}|  {:<}".format(i, ""))
 
-#wolfarm 
+# wolfarm
+
+
 def wolf():
     # App id obtained by the above steps
     api_id = 'L963R5-2TQ7WHGE97'
@@ -351,7 +394,7 @@ def wolf():
     # Instance of wolf ram alpha
     # client class
     client = wolframalpha.Client(api_id)
-    
+
     # Stores the response from
     # wolf ram alpha
     res = client.query(query)
@@ -364,6 +407,27 @@ def wolf():
     answer = next(res.results).text
     print(answer)
     speak(answer)
+
+# corona analysis
+
+
+def cor():
+    if("me" in query):
+        deepme()
+    else:
+        deepoth()
+
+    if (age < 8):
+        prec = open("corona//data1.txt", 'r')
+        speak(prec.read())
+
+    elif (age > 7 or age < 51):
+        prec = open("corona//data2.txt", 'r')
+        speak(prec.read())
+
+    elif (age > 50):
+        prec= open("corona//data3.txt", 'r')
+        speak(prec.read())
 
 
 if __name__ == "__main__":
@@ -411,27 +475,10 @@ if __name__ == "__main__":
 
         elif ("tell me your powers" in query or "help" in query
               or "features" in query):
-            features = ''' i can help to do lot many things like..
-            i can give answer of of your all question,
-            i can analyze you and able to tell yourr̥ emotion, gender, age or race,
-            i can tell you the current time and date,
-            i can click your photo,
-            i can play songs for you online or offlie,
-            i can tell you the current weather of any location,
-            i can tell you battery and cpu usage,
-            i can create the reminder list,
-            i can take screenshots,
-            i can repeat you,
-            i can send email to your boss or family or your friend,
-            i can shut down or logout or hibernate your system,
-            i can tell you non funny jokes,
-            i can open any website,
-            i can search on google,
-            i can search the thing on wikipedia,
-            i can change my voice from male to female and vice-versa
-            And yes one more thing, My boss is working on this system to add more features...,
-            tell me what can i do for you??
-            '''
+
+            features = open("features.txt", 'r')
+            speak(features.read())
+
             print(features)
             speak(features)
 
@@ -466,7 +513,7 @@ if __name__ == "__main__":
         elif('repeat' in query):
             repeat()
 
-#open system apps
+# open system apps
         elif("open calculator" in query):
             subprocess.Popen('C:\\Windows\\System32\\calc.exe')
 
@@ -488,9 +535,9 @@ if __name__ == "__main__":
 
 # searching on wikipedia
         elif("wikipedia" in query):
-        # elif ('wikipedia' in query or 'what' in query or 'who' in query
-        #       or 'when' in query or 'where' in query or 'how' in query):
-        #     speak("searching...")
+            # elif ('wikipedia' in query or 'what' in query or 'who' in query
+            #       or 'when' in query or 'where' in query or 'how' in query):
+            #     speak("searching...")
             query = query.replace("wikipedia", " ")
             query = query.replace("search", " ")
             query = query.replace("what", " ")
@@ -542,6 +589,11 @@ if __name__ == "__main__":
             # wb.open_new_tab(search)
             wb.get(chromepath).open_new_tab('https://www.google.com/search?q='+query+'&oq='+query +
                                             '&aqs=chrome..69i57j46i433l2j0i433l2j69i60l2j69i61.2143j0j4&sourceid=chrome&ie=UTF-8')
+
+# corona procations
+
+        elif('corona' in query or 'precautions' in query):
+            cor()
 
 # sysytem logout/ shut down etc
 
@@ -648,7 +700,7 @@ if __name__ == "__main__":
               or 'nothing' in query):
             wishme_end()
 
-#wolfarmalpha
+# wolfarmalpha
 
         else:
             wolf()
