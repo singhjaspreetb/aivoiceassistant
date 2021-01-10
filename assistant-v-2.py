@@ -1,5 +1,7 @@
 import subprocess
 
+import wolframalpha #pip install wolfarmalpha
+
 import pyttsx3  # pip install pyttsx3
 
 import datetime  # module
@@ -152,7 +154,7 @@ def wishme_end():
 def takeCommand():
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        print("Listing...")
+        print("Listening...")
         r.pause_threshold = 0.5
         audio = r.listen(source)
 
@@ -341,6 +343,28 @@ def wifi():
         except IndexError:
             print("{:<30}|  {:<}".format(i, ""))
 
+#wolfarm 
+def wolf():
+    # App id obtained by the above steps
+    api_id = 'L963R5-2TQ7WHGE97'
+
+    # Instance of wolf ram alpha
+    # client class
+    client = wolframalpha.Client(api_id)
+    
+    # Stores the response from
+    # wolf ram alpha
+    res = client.query(query)
+    # for pod in res.pods:
+    #     do_something_with(pod)
+
+    # for pod in res.pods:
+    #     for sub in pod.subpods:
+    #         print(sub.plainText)
+    answer = next(res.results).text
+    print(answer)
+    speak(answer)
+
 
 if __name__ == "__main__":
     wishme()
@@ -442,6 +466,15 @@ if __name__ == "__main__":
         elif('repeat' in query):
             repeat()
 
+#open system apps
+        elif("open calculator" in query):
+            subprocess.Popen('C:\\Windows\\System32\\calc.exe')
+
+        elif("open notepad" in query):
+            subprocess.Popen('C:\\Windows\\System32\\notepad.exe')
+
+        elif("open wordpad" in query):
+            subprocess.Popen('C:\\Windows\\System32\\write.exe')
 # personal info
 
         elif ("tell me about yourself" in query or "yourself" in query or "about you" in query or "who are you" in query):
@@ -454,10 +487,10 @@ if __name__ == "__main__":
             speak("here is the details: " + res.read())
 
 # searching on wikipedia
-
-        elif ('wikipedia' in query or 'what' in query or 'who' in query
-              or 'when' in query or 'where' in query or 'how' in query):
-            speak("searching...")
+        elif("wikipedia" in query):
+        # elif ('wikipedia' in query or 'what' in query or 'who' in query
+        #       or 'when' in query or 'where' in query or 'how' in query):
+        #     speak("searching...")
             query = query.replace("wikipedia", " ")
             query = query.replace("search", " ")
             query = query.replace("what", " ")
@@ -485,6 +518,7 @@ if __name__ == "__main__":
                 print(e)
                 speak("Unable to send email check the address of the recipient")
 
+
 # open website
 
         elif ('open' in query):
@@ -500,6 +534,8 @@ if __name__ == "__main__":
         elif ("search on google" in query or 'search' in query or 'google' in query or 'hey jarvis' in query):
             query = query.replace("hey jarvis", " ")
             query = query.replace("search", " ")
+            query = query.replace("google", " ")
+            query = query.replace("search on google", " ")
             # speak("What should i search ?")
             chromepath = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
             # search = takeCommand().lower()
@@ -611,3 +647,8 @@ if __name__ == "__main__":
               or 'go offline jarvis' in query or 'bye' in query
               or 'nothing' in query):
             wishme_end()
+
+#wolfarmalpha
+
+        else:
+            wolf()

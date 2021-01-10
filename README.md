@@ -11,6 +11,8 @@ ________________________________________________________________________________
 
 <p>
 Hi/hello<br>
+'n' to the power of 'm' # 2 to the power of 8<br>
+convert 'n' inch/meter/feet/celsius/gm to km/feet/inch/kalvin/pound/ etc <br>
 why you came to world<br>
 who i am<br>
 i love you<br>
@@ -30,6 +32,7 @@ Send Email<br>
 Open Website<br>
 hey jarvis 'query'<>
 Search on Google then 'query'<br>
+wikipedia 'query'<br>
 logut<br>
 restart<br>
 shut down<br>
