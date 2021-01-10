@@ -673,17 +673,17 @@ if __name__ == "__main__":
 # play songs
 
         elif 'play music' in query or "play song" in query or "song" in query:
-            speak("Online or Offline")
-            choice = takeCommand()
+            # speak("Online or Offline")
+            # choice = takeCommand()
 
             speak("Here you go with music")
             speak("Playing...")
-            if "online" in choice:
+            if "online" in query:
 
                 wb.open_new_tab(
                     "https://music.youtube.com/watch?v=HC3-gSNbx00&list=RDAMVMHC3-gSNbx00")
 
-            elif "offline" in choice:
+            elif "offline" in query:
                 # music_dir = "----------------"
                 music_dir = "D:\\Songs"
                 songs = os.listdir(music_dir)
