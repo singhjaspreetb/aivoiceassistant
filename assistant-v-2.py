@@ -347,7 +347,8 @@ if __name__ == "__main__":
     while (True):
         query = takeCommand().lower()
 
-        # time
+
+# time
 
         if ('time' in query):
             time()
@@ -356,6 +357,72 @@ if __name__ == "__main__":
 
         elif ('date' in query):
             date()
+
+
+# most asked question from google Assistant
+
+        elif "will you be my gf" in query or "will you be my bf" in query:
+            speak("oohho Jaspreet! Are you flirting with me?")
+
+        elif 'how are you' in query:
+            speak("I am fine, Thank you")
+            speak("How are you, Jaspreet?")
+
+        elif 'fine' in query or "good" in query:
+            speak("It's good to know that your fine")
+
+        elif "i love you" in query:
+            speak("Ooh my god! I love you too")
+
+        elif "who i am" in query:
+            speak("If you talk then definately you are human.")
+
+        elif "why you came to world" in query:
+            speak("Thanks to Jaspreet. further It's a secret")
+
+        elif "who made you" in query or "who created you" in query:
+            speak("I have been created by Jaspreet.")
+
+        # jarvis features
+
+        elif ("tell me your powers" in query or "help" in query
+              or "features" in query):
+            features = ''' i can help to do lot many things like..
+            i can give answer of of your all question,
+            i can analyze you and able to tell yourr̥ emotion, gender, age or race,
+            i can tell you the current time and date,
+            i can click your photo,
+            i can play songs for you online or offlie,
+            i can tell you the current weather of any location,
+            i can tell you battery and cpu usage,
+            i can create the reminder list,
+            i can take screenshots,
+            i can repeat you,
+            i can send email to your boss or family or your friend,
+            i can shut down or logout or hibernate your system,
+            i can tell you non funny jokes,
+            i can open any website,
+            i can search on google,
+            i can search the thing on wikipedia,
+            i can change my voice from male to female and vice-versa
+            And yes one more thing, My boss is working on this system to add more features...,
+            tell me what can i do for you??
+            '''
+            print(features)
+            speak(features)
+
+        elif ("hii" in query or "hello" in query or "goodmorning" in query
+              or "goodafternoon" in query or "goodnight" in query
+              or "morning" in query or "noon" in query or "night" in query):
+            query = query.replace("jarvis", "")
+            query = query.replace("hi", "")
+            query = query.replace("hello", "")
+            if ("morning" in query or "night" in query or "goodnight" in query
+                    or "afternoon" in query or "noon" in query):
+                checktime(query)
+            else:
+                speak("what can i do for you")
+
 
 # wifi
 
@@ -502,46 +569,6 @@ if __name__ == "__main__":
             speak("Done!")
 
 
-# jarvis features
-
-        elif ("tell me your powers" in query or "help" in query
-              or "features" in query):
-            features = ''' i can help to do lot many things like..
-            i can give answer of of your all question,
-            i can analyze you and able to tell yourr̥ emotion, gender, age or race,
-            i can tell you the current time and date,
-            i can click your photo,
-            i can play songs for you online or offlie,
-            i can tell you the current weather of any location,
-            i can tell you battery and cpu usage,
-            i can create the reminder list,
-            i can take screenshots,
-            i can repeat you,
-            i can send email to your boss or family or your friend,
-            i can shut down or logout or hibernate your system,
-            i can tell you non funny jokes,
-            i can open any website,
-            i can search on google,
-            i can search the thing on wikipedia,
-            i can change my voice from male to female and vice-versa
-            And yes one more thing, My boss is working on this system to add more features...,
-            tell me what can i do for you??
-            '''
-            print(features)
-            speak(features)
-
-        elif ("hii" in query or "hello" in query or "goodmorning" in query
-              or "goodafternoon" in query or "goodnight" in query
-              or "morning" in query or "noon" in query or "night" in query):
-            query = query.replace("jarvis", "")
-            query = query.replace("hi", "")
-            query = query.replace("hello", "")
-            if ("morning" in query or "night" in query or "goodnight" in query
-                    or "afternoon" in query or "noon" in query):
-                checktime(query)
-            else:
-                speak("what can i do for you")
-
 # changing voice
 
         elif ("voice" in query or 'boy' in query or 'female' in query or 'male' in query or 'girl' in query):
@@ -554,36 +581,6 @@ if __name__ == "__main__":
                 v = 0
                 voice_change(v)
 
-# exit function
-
-        elif ('i am done' in query or 'bye bye jarvis' in query
-              or 'go offline jarvis' in query or 'bye' in query
-              or 'nothing' in query):
-            wishme_end()
-
-# most asked question from google Assistant
-
-        elif "will you be my gf" in query or "will you be my bf" in query:
-            speak("oohho Jaspreet! Are you flirting with me?")
-
-        elif 'how are you' in query:
-            speak("I am fine, Thank you")
-            speak("How are you, Jaspreet?")
-
-        elif 'fine' in query or "good" in query:
-            speak("It's good to know that your fine")
-
-        elif "i love you" in query:
-            speak("Ooh my god! I love you too")
-
-        elif "who i am" in query:
-            speak("If you talk then definately you are human.")
-
-        elif "why you came to world" in query:
-            speak("Thanks to Jaspreet. further It's a secret")
-
-        elif "who made you" in query or "who created you" in query:
-            speak("I have been created by Jaspreet.")
 
 # play songs
 
@@ -606,3 +603,11 @@ if __name__ == "__main__":
                 random = os.startfile(os.path.join(music_dir, songs[1]))
                 files = os.listdir(music_dir)
             speak("Hope you enjoy the music")
+
+
+# exit function
+
+        elif ('i am done' in query or 'bye bye jarvis' in query
+              or 'go offline jarvis' in query or 'bye' in query
+              or 'nothing' in query):
+            wishme_end()
