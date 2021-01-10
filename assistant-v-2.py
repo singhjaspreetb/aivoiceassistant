@@ -359,7 +359,7 @@ if __name__ == "__main__":
 
 # wifi
 
-        elif ('Wi-Fi' in query or 'Wi-Fi password' in query or 'wi-fi password' in query or 'wi-fi' in query):
+        elif ('Wi-Fi' in query or 'Wi-Fi password' in query or 'wi-fi' in query or 'wi-fi password' in query):
             wifi()
 
 # photo
@@ -490,7 +490,7 @@ if __name__ == "__main__":
         elif ("weather" in query or "temperature" in query):
             weather()
 
-#thanks function
+# thanks function
 
         elif('thanks' in query):
             speak("Welcome Sir")
