@@ -7,10 +7,6 @@ import pyttsx3
 from datetime import datetime
 
 
-<<<<<<< HEAD
-# Initialize the recognizer 
-r = sr.Recognizer() 
-=======
 # Initialize the recognizer
 r = sr.Recognizer()
 
@@ -23,7 +19,6 @@ def SpeakText(command):
         engine = pyttsx3.init('dummy')
         engine.say(command)
         engine.runAndWait()
->>>>>>> eea981cb602a0283cead08abc5d0d99493326ab6
 
 # Function to convert text to speech 
 def SpeakText(command): 
