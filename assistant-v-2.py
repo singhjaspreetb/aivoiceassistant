@@ -22,7 +22,7 @@ import psutil  # pip install psutil
 
 import pyjokes  # pip install pyjokes
 
-import requests
+import requests  # pip install requests
 
 import json  # inbuilt
 
@@ -426,7 +426,7 @@ def cor():
         speak(prec.read())
 
     elif (age > 50):
-        prec= open("corona//data3.txt", 'r')
+        prec = open("corona//data3.txt", 'r')
         speak(prec.read())
 
 
