@@ -13,6 +13,8 @@ ________________________________________________________________________________
 Hi/hello<br>
 'n' to the power of 'm' # 2 to the power of 8<br>
 convert 'n' inch/meter/feet/celsius/gm to km/feet/inch/kalvin/pound/ etc <br>
+corona precaution for me<br>
+corona precaution for other<br>
 why you came to world<br>
 who i am<br>
 i love you<br>
