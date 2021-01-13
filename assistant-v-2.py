@@ -10,7 +10,7 @@ import speech_recognition as sr
 
 import wikipedia  # pip install wikipedia
 
-import smtplib  # pip install amtplib
+import smtplib  # pip install smtplib
 
 import webbrowser as wb
 
@@ -383,6 +383,7 @@ def wifi():
             speak(results)
         except IndexError:
             print("{:<30}|  {:<}".format(i, ""))
+            speak("Sorry some internal problem!")
 
 # wolfarm
 
@@ -702,6 +703,6 @@ if __name__ == "__main__":
 
 # wolfarmalpha
 
-        elif ('what' in query or 'who' in query or 'when' in query or 'where' in query 
-        or 'how' in query or 'power' in query or 'convert' in query):
+        elif ('what' in query or 'who' in query or 'when' in query or 'where' in query
+              or 'how' in query or 'power' in query or 'convert' in query):
             wolf()

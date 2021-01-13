@@ -21,7 +21,7 @@ i love you<br>
 thanks<br>
 how are you<br>
 will you be my gf<br>
-Tell me the time<br>
+Tell me the current time<br>
 Tell me the date<br>
 Show me wifi Passwords<br>
 Take photo<br>
