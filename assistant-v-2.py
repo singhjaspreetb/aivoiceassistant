@@ -34,7 +34,7 @@ import cv2
 
 import time as tim
 
-import twilio  # pip install twilio
+import twilio # pip install twilio
 
 from playsound import playsound  # pip install playsound
 
