@@ -9,7 +9,7 @@ following task it can open YouTube, Gmail, Google, and
 <li>Predict current time, take a photo, search Wikipedia to
 abstract required data, predict the weather in different
 cities, can do basics mathematical calculations.</li>
- <li> Can Read Facial Exprestions.  </li>
+ <li> Can Read Facial Exprestions and give conona precautions for you </li>
 </ul></h3>
 
 <h3>That can do a lot of things for you</h3>
