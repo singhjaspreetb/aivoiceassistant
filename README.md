@@ -1,6 +1,16 @@
 <h1>Created by - Jaspreet Singh</h1><br>
 
-<h1>A basics Voice Assistant</h1> 
+<h1>A Voice Assistant</h1> 
+
+<h3><ul>
+<li>The implemented voice assistant can perform the
+following task it can open YouTube, Gmail, Google, and
+  other sites as per user request.</li>
+<li>Predict current time, take a photo, search Wikipedia to
+abstract required data, predict the weather in different
+cities, can do basics mathematical calculations.</li>
+ <li> Can Read Facial Exprestions.  </li>
+</ul></h3>
 
 <h3>That can do a lot of things for you</h3>
 
